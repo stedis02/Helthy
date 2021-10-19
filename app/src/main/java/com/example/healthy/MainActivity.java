@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
+    //Непосредственное закртие  датабазы
     @Override
     protected void onDestroy() {
         super.onDestroy();
