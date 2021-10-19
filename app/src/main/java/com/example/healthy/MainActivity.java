@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
+    // здесь заканчивается работа с базой данных
     @Override
     protected void onDestroy() {
         super.onDestroy();
