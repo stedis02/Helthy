@@ -1,8 +1,6 @@
 package com.example.healthy;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -72,7 +70,7 @@ public void ClickSave(View view){
         else{
             if(NoteEdit) {
                 dbManager.DBInsert(edTitle.getText().toString(), edTitle2.getText().toString());
-                Intent intent = new Intent(NotesActivity.this, MainActivity.class);
+                Intent intent = new Intent(NotesActivity.this, NoteActivity.class);
                 startActivity(intent);
 
                 dbManager.DBClose();
