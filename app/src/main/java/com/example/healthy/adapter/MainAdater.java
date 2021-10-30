@@ -35,7 +35,7 @@ public class MainAdater extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @NonNull
     @Override
-    public  final RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public   RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         switch(viewType) {
             case 0:
                 View view = LayoutInflater.from(context).inflate(R.layout.note_list, parent, false);

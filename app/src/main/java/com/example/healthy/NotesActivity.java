@@ -31,7 +31,6 @@ private Note note;
 
         dbManager = new DBManager(this);
         mainAdater = new MainAdater(this);
-        mainAdater.getItemViewType(0);
         edTitle = findViewById(R.id.edTitle);
         edTitle2 = findViewById(R.id.edTitle2);
 
