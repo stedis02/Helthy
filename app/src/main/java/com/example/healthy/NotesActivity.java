@@ -56,7 +56,7 @@ private Note note;
     protected void onResume() {
         super.onResume();
         dbManager.DBOpen();
-        mainAdater.ubdateAdapter(dbManager.DBGetNote());
+        mainAdater.updateAdapter(dbManager.DBGetNote());
 
 
 
@@ -76,7 +76,7 @@ public void ClickSave(View view){
                 dbManager.DBClose();
             }
             else{
-                dbManager.DBUpdate(note.getId(), edTitle.getText().toString(), edTitle2.getText().toString());
+                dbManager.DBUpdateNote(note.getId(), edTitle.getText().toString(), edTitle2.getText().toString());
                 dbManager.DBClose();
                 finish();
             }

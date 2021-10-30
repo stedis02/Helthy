@@ -31,7 +31,7 @@ public class DBManager {
         sqLiteDatabase.insert(Constants.TableName, null, contentValues);
     }
 
-    public void DBUpdate(int id, String TITLE, String DISC){
+    public void DBUpdateNote(int id, String TITLE, String DISC){
         String selection = Constants._id + "=" + id;
         ContentValues contentValues = new ContentValues();
         contentValues.put(Constants.Title, TITLE);
@@ -71,11 +71,12 @@ public class DBManager {
     }
 
 
-    public void Delete(int id){
+    public void DeleteNote(int id){
 String selection = Constants._id + "=" + id;
         sqLiteDatabase.delete(Constants.TableName, selection, null);
 
     }
+
 
     public void DBClose() {
         dbHelper.close();

@@ -16,6 +16,9 @@
             android:name=".NoteActivity"
             android:exported="true" />
         <activity
+            android:name=".DoctorActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
 

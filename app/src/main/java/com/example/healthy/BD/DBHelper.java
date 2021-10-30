@@ -14,11 +14,13 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(Constants.TableStructure);
+        sqLiteDatabase.execSQL(Constants.Table1Structure);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL(Constants.TableDrop);
+        sqLiteDatabase.execSQL(Constants.Table1Drop);
         onCreate(sqLiteDatabase);
     }
 }
