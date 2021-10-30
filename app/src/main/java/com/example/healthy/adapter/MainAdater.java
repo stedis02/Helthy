@@ -19,7 +19,7 @@ import com.example.healthy.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainAdater extends RecyclerView.Adapter<MainAdater.MainNoteViewHolder> {
+public class MainAdater extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private List<Note> notelist;
 
@@ -28,17 +28,40 @@ public class MainAdater extends RecyclerView.Adapter<MainAdater.MainNoteViewHold
         notelist = new ArrayList<>();
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return position % 2 * 2;
+    }
+
     @NonNull
     @Override
-    public MainNoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.note_list, parent, false);
-        return new MainNoteViewHolder(view, context, notelist);
+    public  final RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        switch(viewType) {
+            case 0:
+                View view = LayoutInflater.from(context).inflate(R.layout.note_list, parent, false);
+                return new MainNoteViewHolder(view, context, notelist);
+            case 2:
+                View view2 = LayoutInflater.from(context).inflate(R.layout.note_list, parent, false);
+                return new MainDoctorViewHolder(view2, context);
+            default:
+                View view3 = LayoutInflater.from(context).inflate(R.layout.note_list, parent, false);
+                return new MainDefaultViewHolder(view3);
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MainNoteViewHolder holder, int position) {
-        holder.setData(notelist.get(position));
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        switch (holder.getItemViewType()){
+            case 0: MainNoteViewHolder mainNoteViewHolder = (MainNoteViewHolder)holder;
+                mainNoteViewHolder.setData(notelist.get(position));
+                break;
+            case 2: MainDoctorViewHolder mainDoctorViewHolder = (MainDoctorViewHolder)holder;
+            break;
+        }
     }
+
+
+
 
     @Override
     public int getItemCount() {
@@ -52,6 +75,11 @@ public class MainAdater extends RecyclerView.Adapter<MainAdater.MainNoteViewHold
 
     }
 
+    class MainDefaultViewHolder extends RecyclerView.ViewHolder{
+        public MainDefaultViewHolder(@NonNull View itemView) {
+            super(itemView);
+        }
+    }
 
     class MainNoteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public MainNoteViewHolder(@NonNull View itemView, Context context, List<Note> notelist) {
@@ -89,6 +117,20 @@ public class MainAdater extends RecyclerView.Adapter<MainAdater.MainNoteViewHold
             intent.putExtra(Constants.ListKey, notelist.get(getAdapterPosition()));
             intent.putExtra(Constants.NoteEditKey, false);
             context.startActivity(intent);
+
+        }
+    }
+
+    class MainDoctorViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        public MainDoctorViewHolder(@NonNull View itemView, Context context) {
+            super(itemView);
+            itemView.setOnClickListener(this);
+            this.context = context;
+        }
+        private final Context context;
+
+            @Override
+        public void onClick(View view) {
 
         }
     }

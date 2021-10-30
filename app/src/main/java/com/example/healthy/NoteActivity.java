@@ -28,6 +28,7 @@ public class NoteActivity extends AppCompatActivity {
 
         dbManager = new DBManager(this);
         mainAdater = new MainAdater(this);
+        mainAdater.getItemViewType(0);
         recyclerView = findViewById(R.id.recview);
         // ucazivaem polozenie blocov recyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
