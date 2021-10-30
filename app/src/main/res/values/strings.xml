@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Healthy</string>
     <string name="note_error_massage">Заполните все поля!</string>
+    <string name="lengthoftitle_error">Заголовок слишком длинный!</string>
 </resources>

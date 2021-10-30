@@ -67,17 +67,20 @@ public class NotesActivity extends AppCompatActivity {
     }
 
     public void ClickSave(View view){
-        if(edTitle.getText().toString().equals("")||edTitle2.getText().toString().equals("")){
-            Toast.makeText(this, R.string.note_error_massage, Toast.LENGTH_SHORT).show();
+        if(edTitle.getText().toString().equals("")||edTitle2.getText().toString().equals("") || edTitle.getText().length()>=25 ) {
+            if (edTitle.getText().length()>=20)
+                Toast.makeText(this, R.string.lengthoftitle_error, Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(this, R.string.note_error_massage, Toast.LENGTH_SHORT).show();
 
         }
         else{
             if(NoteEdit) {
-                dbManager.DBInsert(edTitle.getText().toString(), edTitle2.getText().toString());
-                Intent intent = new Intent(NotesActivity.this, MainActivity.class);
-                startActivity(intent);
+                    dbManager.DBInsert(edTitle.getText().toString(), edTitle2.getText().toString());
+                    Intent intent = new Intent(NotesActivity.this, MainActivity.class);
+                    startActivity(intent);
 
-                dbManager.DBClose();
+                    dbManager.DBClose();
             }
             else{
                 dbManager.DBUpdate(note.getId(), edTitle.getText().toString(), edTitle2.getText().toString());

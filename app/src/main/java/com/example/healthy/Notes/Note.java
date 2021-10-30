@@ -12,6 +12,7 @@ public class Note implements Serializable {
     }
 
     public void setDiscription(String discription) {
+
         this.discription = discription;
     }
 
