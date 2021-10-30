@@ -13,41 +13,43 @@ import android.widget.Toast;
 import com.example.healthy.BD.Constants;
 import com.example.healthy.BD.DBManager;
 import com.example.healthy.Notes.Note;
-import com.example.healthy.adapter.MainAdater;
+import com.example.healthy.adapter.MainAdapter;
 
 public class NotesActivity extends AppCompatActivity {
 
     private EditText edTitle, edTitle2;
     private DBManager dbManager;
-    private MainAdater mainAdater;
-private boolean NoteEdit;
-private Note note;
+    private MainAdapter mainAdapter;
+    private boolean NoteEdit;
+    private Note note;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
         init();
-       getIntents();
+        getIntents();
     }
+
     protected void init(){
 
         dbManager = new DBManager(this);
-        mainAdater = new MainAdater(this);
+        mainAdapter = new MainAdapter(this);
         edTitle = findViewById(R.id.edTitle);
         edTitle2 = findViewById(R.id.edTitle2);
 
     }
+
     public void getIntents(){
-       Intent intent = getIntent();
+        Intent intent = getIntent();
         if(intent!= null){
 
             note = (Note)intent.getSerializableExtra(Constants.ListKey);
-           NoteEdit = intent.getBooleanExtra(Constants.NoteEditKey, true);
+            NoteEdit = intent.getBooleanExtra(Constants.NoteEditKey, true);
+
             if(!NoteEdit) {
-                // вот это починить.
-                // починил
                 edTitle.setText(note.getTitle());
-                 edTitle2.setText(note.getDiscription());
+                edTitle2.setText(note.getDiscription());
             }
         }
 
@@ -58,13 +60,13 @@ private Note note;
     protected void onResume() {
         super.onResume();
         dbManager.DBOpen();
-        mainAdater.ubdateAdapter(dbManager.DBGetNote());
+        mainAdapter.updateAdapter(dbManager.DBGetNote());
 
 
 
     }
 
-public void ClickSave(View view){
+    public void ClickSave(View view){
         if(edTitle.getText().toString().equals("")||edTitle2.getText().toString().equals("")){
             Toast.makeText(this, R.string.note_error_massage, Toast.LENGTH_SHORT).show();
 
@@ -84,7 +86,7 @@ public void ClickSave(View view){
             }
         }
 
-}
+    }
 
 
 

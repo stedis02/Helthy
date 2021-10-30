@@ -11,12 +11,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.healthy.BD.DBManager;
-import com.example.healthy.adapter.MainAdater;
+import com.example.healthy.adapter.MainAdapter;
 
 public class MainActivity extends AppCompatActivity {
     private DBManager dbManager;
     private RecyclerView recyclerView;
-    private MainAdater mainAdater;
+    private MainAdapter mainAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,19 +27,19 @@ public class MainActivity extends AppCompatActivity {
     protected void init(){
 
         dbManager = new DBManager(this);
-        mainAdater = new MainAdater(this);
+        mainAdapter = new MainAdapter(this);
         recyclerView = findViewById(R.id.recview);
         // ucazivaem polozenie blocov recyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         getItemTouchHelper().attachToRecyclerView(recyclerView);
-        recyclerView.setAdapter(mainAdater);
+        recyclerView.setAdapter(mainAdapter);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         dbManager.DBOpen();
-        mainAdater.ubdateAdapter(dbManager.DBGetNote());
+        mainAdapter.updateAdapter(dbManager.DBGetNote());
 
 
 
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void OnClick(View view){
-//dbManager.DBInsert(edTitle.getText().toString(), edTitle2.getText().toString());
+        //dbManager.DBInsert(edTitle.getText().toString(), edTitle2.getText().toString());
         // создание перехода между активити
         Intent intent = new Intent(MainActivity.this, NotesActivity.class);
         startActivity(intent);
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                mainAdater.DeleteItem(viewHolder.getAdapterPosition(), dbManager);
+                mainAdapter.DeleteItem(viewHolder.getAdapterPosition(), dbManager);
             }
         });
 

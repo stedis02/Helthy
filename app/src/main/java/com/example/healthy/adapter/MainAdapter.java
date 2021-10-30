@@ -22,11 +22,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainAdater  extends RecyclerView.Adapter<MainAdater.MainViewHolder> {
+public class MainAdapter  extends RecyclerView.Adapter<MainAdapter.MainViewHolder> {
     private Context context;
-private List<Note> notelist;
+    private List<Note> notelist;
 
-    public MainAdater(Context context) {
+    public MainAdapter(Context context) {
         this.context = context;
         notelist = new ArrayList<>();
     }
@@ -40,14 +40,14 @@ private List<Note> notelist;
 
     @Override
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
-holder.setData(notelist.get(position));
+        holder.setData(notelist.get(position));
     }
 
     @Override
     public int getItemCount() {
         return notelist.size();
     }
-public void ubdateAdapter(List<Note> newList){
+    public void updateAdapter(List<Note> newList){
         notelist.clear();
         notelist.addAll(newList);
         notifyDataSetChanged();
@@ -87,10 +87,10 @@ public void ubdateAdapter(List<Note> newList){
 
         @Override
         public void onClick(View view) {
-Intent intent = new Intent(context, NotesActivity.class);
-intent.putExtra(Constants.ListKey, notelist.get(getAdapterPosition()));
-intent.putExtra(Constants.NoteEditKey, false);
-context.startActivity(intent);
+            Intent intent = new Intent(context, NotesActivity.class);
+            intent.putExtra(Constants.ListKey, notelist.get(getAdapterPosition()));
+            intent.putExtra(Constants.NoteEditKey, false);
+            context.startActivity(intent);
 
         }
     }

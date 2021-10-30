@@ -72,7 +72,7 @@ public class DBManager {
 
 
     public void Delete(int id){
-String selection = Constants._id + "=" + id;
+        String selection = Constants._id + "=" + id;
         sqLiteDatabase.delete(Constants.TableName, selection, null);
 
     }
