@@ -1,4 +1,4 @@
-package com.example.healthy;
+package com.example.healthy.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,13 +11,14 @@ import android.widget.Toast;
 import com.example.healthy.BD.Constants;
 import com.example.healthy.BD.DBManager;
 import com.example.healthy.Notes.Note;
-import com.example.healthy.adapter.MainAdater;
+import com.example.healthy.R;
+import com.example.healthy.adapter.NotesAdater;
 
 public class NotesActivity extends AppCompatActivity {
 
     private EditText edTitle, edTitle2;
     private DBManager dbManager;
-    private MainAdater mainAdater;
+    private NotesAdater mainAdater;
 private boolean NoteEdit;
 private Note note;
     @Override
@@ -30,7 +31,7 @@ private Note note;
     protected void init(){
 
         dbManager = new DBManager(this);
-        mainAdater = new MainAdater(this);
+        mainAdater = new NotesAdater(this);
         edTitle = findViewById(R.id.edTitle);
         edTitle2 = findViewById(R.id.edTitle2);
 
@@ -69,7 +70,7 @@ public void ClickSave(View view){
         }
         else{
             if(NoteEdit) {
-                dbManager.DBInsert(edTitle.getText().toString(), edTitle2.getText().toString());
+                dbManager.DBInsertNote(edTitle.getText().toString(), edTitle2.getText().toString());
                 Intent intent = new Intent(NotesActivity.this, NoteActivity.class);
                 startActivity(intent);
 

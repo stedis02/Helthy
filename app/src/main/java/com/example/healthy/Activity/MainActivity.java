@@ -1,14 +1,13 @@
-package com.example.healthy;
+package com.example.healthy.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
+
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.example.healthy.R;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -22,6 +21,12 @@ public void ClickTrans(View view){
     startActivity(intent);
 
 }
+
+    public void ClickTransDoctor(View view){
+        Intent intent = new Intent(MainActivity.this, DoctorActivity.class);
+        startActivity(intent);
+
+    }
 
     @Override
     protected void onDestroy() {

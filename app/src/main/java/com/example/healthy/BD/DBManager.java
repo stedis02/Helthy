@@ -24,7 +24,7 @@ public class DBManager {
         sqLiteDatabase = dbHelper.getWritableDatabase();
     }
 
-    public void DBInsert(String TITLE, String DISC) {
+    public void DBInsertNote(String TITLE, String DISC) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(Constants.Title, TITLE);
         contentValues.put(Constants.Disc, DISC);

@@ -1,4 +1,8 @@
-package com.example.healthy;
+package com.example.healthy.Activity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,28 +10,25 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-
 import com.example.healthy.BD.DBManager;
-import com.example.healthy.adapter.MainAdater;
+import com.example.healthy.R;
+import com.example.healthy.adapter.NotesAdater;
 
-public class NoteActivity extends AppCompatActivity {
+public class DoctorActivity extends AppCompatActivity {
     private DBManager dbManager;
     private RecyclerView recyclerView;
-    private MainAdater mainAdater;
+    private NotesAdater mainAdater;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_note);
+        setContentView(R.layout.activity_main_doctor);
         init();
     }
 
     protected void init(){
 
         dbManager = new DBManager(this);
-        mainAdater = new MainAdater(this);
+        mainAdater = new NotesAdater(this);
         recyclerView = findViewById(R.id.recview);
         // ucazivaem polozenie blocov recyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -39,7 +40,7 @@ public class NoteActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         dbManager.DBOpen();
-        mainAdater.updateAdapter(dbManager.DBGetNote());
+       // mainAdater.updateAdapter(dbManager.DBGetNote());
 
 
 
@@ -50,8 +51,11 @@ public class NoteActivity extends AppCompatActivity {
     public void OnClick(View view){
 //dbManager.DBInsert(edTitle.getText().toString(), edTitle2.getText().toString());
         // создание перехода между активити
-        Intent intent = new Intent(NoteActivity.this, NotesActivity.class);
-        startActivity(intent);
+      //  Intent intent = new Intent(DoctorActivity.this, NotesActivity.class);
+       // startActivity(intent);
+
+
+
     }
 
     public ItemTouchHelper getItemTouchHelper(){
