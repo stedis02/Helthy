@@ -13,6 +13,9 @@
             android:name=".Activity.NotesActivity"
             android:exported="true" />
         <activity
+            android:name=".Activity.DoctorCreateActivity"
+            android:exported="true" />
+        <activity
             android:name=".Activity.NoteActivity"
             android:exported="true" />
         <activity

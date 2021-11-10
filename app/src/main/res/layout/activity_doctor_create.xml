@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.NotesActivity">
+    tools:context=".Activity.DoctorCreateActivity">
 
     <EditText
         android:id="@+id/surname"
@@ -12,39 +12,46 @@
         android:layout_height="57dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Title"
+        android:hint="surname"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-
-        android:id="@+id/edTitle2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:id="@+id/name"
+        android:layout_width="411dp"
+        android:layout_height="57dp"
         android:ems="10"
-        android:gravity="top"
-        android:hint="title2"
-        android:inputType="textMultiLine"
-        android:singleLine="false"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:hint="name"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/surname" />
+
+    <EditText
+        android:id="@+id/middleName"
+        android:layout_width="411dp"
+        android:layout_height="57dp"
+        android:ems="10"
+        android:hint="middle name (optional)"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="32dp"
         android:clickable="true"
         android:onClick="ClickSave"
-        app:layout_constraintBottom_toBottomOf="@+id/edTitle2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/middleName"
+        app:layout_constraintVertical_bias="0.075"
         app:srcCompat="@android:drawable/ic_menu_edit" />
 </androidx.constraintlayout.widget.ConstraintLayout>

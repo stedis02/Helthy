@@ -14,7 +14,7 @@ import com.example.healthy.Activity.DoctorInformationActivity;
 import com.example.healthy.BD.Constants;
 import com.example.healthy.BD.DBManager;
 import com.example.healthy.Doctors.Doctor;
-import com.example.healthy.Activity.NotesActivity;
+
 import com.example.healthy.R;
 
 import java.util.ArrayList;
@@ -38,12 +38,14 @@ public class DoctorAdater extends RecyclerView.Adapter<DoctorAdater.MainViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
+        holder.setData(doctorlist.get(position));
     }
 
     @Override
     public int getItemCount() {
         return doctorlist.size();
     }
+
     public void updateAdapter(List<Doctor> newList){
         doctorlist.clear();
         doctorlist.addAll(newList);
@@ -54,19 +56,23 @@ public class DoctorAdater extends RecyclerView.Adapter<DoctorAdater.MainViewHold
 
 // doctor list
     class MainViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public MainViewHolder(@NonNull View itemView, Context context,  List<Doctor> notelist) {
+        public MainViewHolder(@NonNull View itemView, Context context,  List<Doctor> doctorlist) {
             super(itemView);
             noteTitle = itemView.findViewById(R.id.noteTitel);
             noteDesc = itemView.findViewById(R.id.noteDesc);
             itemView.setOnClickListener(this);
             this.context = context;
-            this.notelist = notelist;
+            this.doctorlist = doctorlist;
         }
-        private  List<Doctor> notelist;
+        private  List<Doctor> doctorlist;
         private Context context;
         private TextView noteTitle;
         private TextView noteDesc;
+public void setData(Doctor doctor){
+    String Name = doctor.getName();
+    noteTitle.setText(Name);
 
+}
 
         @Override
         public void onClick(View view) {
@@ -78,7 +84,7 @@ public class DoctorAdater extends RecyclerView.Adapter<DoctorAdater.MainViewHold
         }
     }
     public void DeleteItem(int position, DBManager dbManager){
-        dbManager.DeleteNote(doctorlist.get(position).getId());
+        dbManager.DeleteDoctor(doctorlist.get(position).getId());
         doctorlist.remove(position);
         notifyItemRangeChanged(0, doctorlist.size());
         notifyItemRemoved(position);

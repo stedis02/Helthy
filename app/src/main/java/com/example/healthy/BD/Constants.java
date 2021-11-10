@@ -31,7 +31,7 @@ public class Constants {
     public static final String Table1Drop = "DROP TABLE IF EXISTS " + TableName1;
 
      // не забывать менять версию при изменениях
-    public static final int DBVersion = 1;
+    public static final int DBVersion = 2;
 
 
 }

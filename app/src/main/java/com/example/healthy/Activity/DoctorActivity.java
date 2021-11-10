@@ -12,12 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.healthy.BD.DBManager;
 import com.example.healthy.R;
+import com.example.healthy.adapter.DoctorAdater;
 import com.example.healthy.adapter.NotesAdater;
 
 public class DoctorActivity extends AppCompatActivity {
     private DBManager dbManager;
     private RecyclerView recyclerView;
-    private NotesAdater mainAdater;
+    private DoctorAdater doctorAdater;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,19 +29,19 @@ public class DoctorActivity extends AppCompatActivity {
     protected void init(){
 
         dbManager = new DBManager(this);
-        mainAdater = new NotesAdater(this);
+        doctorAdater = new DoctorAdater(this);
         recyclerView = findViewById(R.id.recview);
         // ucazivaem polozenie blocov recyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         getItemTouchHelper().attachToRecyclerView(recyclerView);
-        recyclerView.setAdapter(mainAdater);
+        recyclerView.setAdapter(doctorAdater);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         dbManager.DBOpen();
-       // mainAdater.updateAdapter(dbManager.DBGetNote());
+        doctorAdater.updateAdapter(dbManager.DBGetDoctor());
 
 
 
@@ -49,10 +50,8 @@ public class DoctorActivity extends AppCompatActivity {
 
 
     public void OnClick(View view){
-//dbManager.DBInsert(edTitle.getText().toString(), edTitle2.getText().toString());
-        // создание перехода между активити
-      //  Intent intent = new Intent(DoctorActivity.this, NotesActivity.class);
-       // startActivity(intent);
+        Intent intent = new Intent(DoctorActivity.this, DoctorCreateActivity.class);
+        startActivity(intent);
 
 
 
@@ -68,7 +67,7 @@ public class DoctorActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                mainAdater.DeleteItem(viewHolder.getAdapterPosition(), dbManager);
+                doctorAdater.DeleteItem(viewHolder.getAdapterPosition(), dbManager);
             }
         });
 

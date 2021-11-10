@@ -32,7 +32,7 @@ private Note note;
 
         dbManager = new DBManager(this);
         mainAdater = new NotesAdater(this);
-        edTitle = findViewById(R.id.edTitle);
+        edTitle = findViewById(R.id.surname);
         edTitle2 = findViewById(R.id.edTitle2);
 
     }
