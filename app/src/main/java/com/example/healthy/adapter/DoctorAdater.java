@@ -90,3 +90,4 @@ public void setData(Doctor doctor){
         notifyItemRemoved(position);
     }
 }
+//проверка работы ветки
