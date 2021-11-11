@@ -24,6 +24,10 @@ public class DoctorAdater extends RecyclerView.Adapter<DoctorAdater.MainViewHold
     private Context context;
     private List<Doctor> doctorlist;
 
+    public List<Doctor> getDoctorlist() {
+        return doctorlist;
+    }
+
     public DoctorAdater(Context context) {
         this.context = context;
         doctorlist = new ArrayList<>();
@@ -58,7 +62,7 @@ public class DoctorAdater extends RecyclerView.Adapter<DoctorAdater.MainViewHold
     class MainViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public MainViewHolder(@NonNull View itemView, Context context,  List<Doctor> doctorlist) {
             super(itemView);
-            noteTitle = itemView.findViewById(R.id.noteTitel);
+            noteTitle = itemView.findViewById(R.id.specTitel);
             noteDesc = itemView.findViewById(R.id.noteDesc);
             itemView.setOnClickListener(this);
             this.context = context;

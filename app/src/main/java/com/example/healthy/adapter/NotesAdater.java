@@ -14,7 +14,6 @@ import com.example.healthy.Activity.DoctorInformationActivity;
 import com.example.healthy.BD.Constants;
 import com.example.healthy.BD.DBManager;
 import com.example.healthy.Notes.Note;
-import com.example.healthy.Activity.NotesActivity;
 import com.example.healthy.R;
 
 import java.util.ArrayList;
@@ -57,7 +56,7 @@ public class NotesAdater extends RecyclerView.Adapter<NotesAdater.MainViewHolder
     class MainViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public MainViewHolder(@NonNull View itemView, Context context,  List<Note> notelist) {
             super(itemView);
-            noteTitle = itemView.findViewById(R.id.noteTitel);
+            noteTitle = itemView.findViewById(R.id.specTitel);
             noteDesc = itemView.findViewById(R.id.noteDesc);
             itemView.setOnClickListener(this);
             this.context = context;

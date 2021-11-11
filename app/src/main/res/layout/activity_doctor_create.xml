@@ -7,36 +7,61 @@
     tools:context=".Activity.DoctorCreateActivity">
 
     <EditText
-        android:id="@+id/surname"
+        android:id="@+id/speciality"
         android:layout_width="0dp"
         android:layout_height="57dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="surname"
+        android:hint="Speciality"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/name"
-        android:layout_width="411dp"
+        android:id="@+id/surname"
+        android:layout_width="0dp"
         android:layout_height="57dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="surname"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/speciality" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/surname" />
 
     <EditText
         android:id="@+id/middleName"
-        android:layout_width="411dp"
+        android:layout_width="0dp"
         android:layout_height="57dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="middle name (optional)"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
@@ -49,9 +74,9 @@
         android:onClick="ClickSave"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/middleName"
-        app:layout_constraintVertical_bias="0.075"
+        app:layout_constraintVertical_bias="0.889"
         app:srcCompat="@android:drawable/ic_menu_edit" />
 </androidx.constraintlayout.widget.ConstraintLayout>
