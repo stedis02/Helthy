@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,7 +51,7 @@ public class DoctorAdater extends RecyclerView.Adapter<DoctorAdater.MainViewHold
         return doctorlist.size();
     }
 
-    public void updateAdapter(List<Doctor> newList){
+    public void updateAdapter(List<Doctor> newList) {
         doctorlist.clear();
         doctorlist.addAll(newList);
         notifyDataSetChanged();
@@ -58,9 +59,9 @@ public class DoctorAdater extends RecyclerView.Adapter<DoctorAdater.MainViewHold
     }
 
 
-// doctor list
+    // doctor list
     class MainViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public MainViewHolder(@NonNull View itemView, Context context,  List<Doctor> doctorlist) {
+        public MainViewHolder(@NonNull View itemView, Context context, List<Doctor> doctorlist) {
             super(itemView);
             noteTitle = itemView.findViewById(R.id.specTitel);
             noteDesc = itemView.findViewById(R.id.noteDesc);
@@ -68,15 +69,17 @@ public class DoctorAdater extends RecyclerView.Adapter<DoctorAdater.MainViewHold
             this.context = context;
             this.doctorlist = doctorlist;
         }
-        private  List<Doctor> doctorlist;
+
+        private List<Doctor> doctorlist;
         private Context context;
         private TextView noteTitle;
         private TextView noteDesc;
-public void setData(Doctor doctor){
-    String Name = doctor.getName();
-    noteTitle.setText(Name);
 
-}
+        public void setData(Doctor doctor) {
+            String Name = doctor.getName();
+            noteTitle.setText(Name);
+
+        }
 
         @Override
         public void onClick(View view) {
@@ -84,10 +87,10 @@ public void setData(Doctor doctor){
             intent.putExtra(Constants.ListKey, doctorlist.get(getAdapterPosition()));
             intent.putExtra(Constants.NoteEditKey, false);
             context.startActivity(intent);
-
         }
     }
-    public void DeleteItem(int position, DBManager dbManager){
+
+    public void DeleteItem(int position, DBManager dbManager) {
         dbManager.DeleteDoctor(doctorlist.get(position).getId());
         doctorlist.remove(position);
         notifyItemRangeChanged(0, doctorlist.size());

@@ -80,11 +80,22 @@ public class DoctorCreateActivity extends AppCompatActivity {
 
         } else {
             dbManager.DBInsertDoctor(Speciality.getText().toString(), surname.getText().toString(), name.getText().toString() + " " + middleName.getText().toString());
+
             // нужно передавать нужный элемент коллекции доктор. пока думаю как это сделать.
             // при нажатии на уведомление программа падает
             // так как не понимает от какого элемента коллекции ей брать данные.
 
             Intent intent = new Intent(getApplicationContext(), DoctorInformationActivity.class);
+
+            // я нашёл решение
+            // иногда моя гениальность просто пугает
+
+            doctorAdater.updateAdapter(dbManager.DBGetDoctor());
+            int  NOT_Index;
+            NOT_Index = doctorAdater.getDoctorlist().size()-1;
+            intent.putExtra(Constants.ListKey, doctorAdater.getDoctorlist().get(NOT_Index));
+
+
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getApplicationContext(), Chanel_id)
@@ -99,6 +110,7 @@ public class DoctorCreateActivity extends AppCompatActivity {
             notificationManager.notify(Not_id, notificationBuilder.build());
 
             dbManager.DBClose();
+
             finish();
         }
     }
