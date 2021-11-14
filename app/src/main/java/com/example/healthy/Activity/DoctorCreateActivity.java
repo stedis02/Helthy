@@ -27,7 +27,7 @@ import com.example.healthy.adapter.DoctorAdater;
 
 public class DoctorCreateActivity extends AppCompatActivity {
 
-    private EditText surname, name, middleName, Speciality;
+    private EditText surname, name, middleName, Speciality , date , time;
     private DBManager dbManager;
     private DoctorAdater doctorAdater;
     private Doctor doctor;
@@ -52,6 +52,8 @@ public class DoctorCreateActivity extends AppCompatActivity {
         middleName = findViewById(R.id.middleName);
         name = findViewById(R.id.name);
         Speciality = findViewById(R.id.speciality);
+        date = findViewById(R.id.date);
+        time = findViewById(R.id.time);
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
     }
@@ -75,11 +77,11 @@ public class DoctorCreateActivity extends AppCompatActivity {
     }
 
     public void ClickSave(View view) {
-        if (surname.getText().toString().equals("") || name.getText().toString().equals("")) {
+        if (surname.getText().toString().equals("") || name.getText().toString().equals("") || date.getText().toString().equals("")) {
             Toast.makeText(this, R.string.note_error_massage, Toast.LENGTH_SHORT).show();
 
         } else {
-            dbManager.DBInsertDoctor(Speciality.getText().toString(), surname.getText().toString(), name.getText().toString() + " " + middleName.getText().toString());
+            dbManager.DBInsertDoctor(Speciality.getText().toString(), surname.getText().toString(), name.getText().toString() + " " + middleName.getText().toString() , date.getText().toString() , time.getText().toString());
 
             // нужно передавать нужный элемент коллекции доктор. пока думаю как это сделать.
             // при нажатии на уведомление программа падает

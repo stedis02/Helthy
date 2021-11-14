@@ -32,11 +32,13 @@ public class DBManager {
         sqLiteDatabase.insert(Constants.TableName, null, contentValues);
     }
 
-    public void DBInsertDoctor(String Speciality ,String surname, String name) {
+    public void DBInsertDoctor(String Speciality ,String surname, String name , String date ,String time) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(Constants.Specialization, Speciality);
         contentValues.put(Constants.SecondName, surname);
         contentValues.put(Constants.FirstName, name);
+        contentValues.put(Constants.Date,date);
+        contentValues.put(Constants.Time,time);
         sqLiteDatabase.insert(Constants.TableName1, null, contentValues);
     }
 

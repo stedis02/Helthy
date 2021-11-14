@@ -7,6 +7,36 @@
     tools:context=".Activity.DoctorCreateActivity">
 
     <EditText
+        android:id="@+id/time"
+        android:layout_width="0dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="344dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Время записи"
+        android:inputType="datetime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="0dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Дата записи"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
         android:id="@+id/speciality"
         android:layout_width="0dp"
         android:layout_height="57dp"

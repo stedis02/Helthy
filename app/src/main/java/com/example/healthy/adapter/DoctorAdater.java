@@ -97,4 +97,3 @@ public class DoctorAdater extends RecyclerView.Adapter<DoctorAdater.MainViewHold
         notifyItemRemoved(position);
     }
 }
-//проверка работы ветки
