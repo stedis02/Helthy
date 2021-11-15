@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.healthy.Activity.DoctorInformationActivity;
+import com.example.healthy.Activity.NotesActivity;
 import com.example.healthy.BD.Constants;
 import com.example.healthy.BD.DBManager;
 import com.example.healthy.Notes.Note;
@@ -84,7 +85,7 @@ public class NotesAdater extends RecyclerView.Adapter<NotesAdater.MainViewHolder
 
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(context, DoctorInformationActivity.class);
+            Intent intent = new Intent(context, NotesActivity.class);
             intent.putExtra(Constants.ListKey, notelist.get(getAdapterPosition()));
             intent.putExtra(Constants.NoteEditKey, false);
             context.startActivity(intent);

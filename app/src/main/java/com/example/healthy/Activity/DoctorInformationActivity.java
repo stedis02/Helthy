@@ -15,6 +15,9 @@ import com.example.healthy.Notes.Note;
 import com.example.healthy.R;
 import com.example.healthy.adapter.NotesAdater;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class DoctorInformationActivity extends AppCompatActivity {
     private Doctor doctor;
     private TextView Speciality;
@@ -39,6 +42,13 @@ public class DoctorInformationActivity extends AppCompatActivity {
             Speciality.setText(doctor.getSpecialty());
 
         }
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
     }
 
