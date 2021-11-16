@@ -38,8 +38,8 @@ public class DoctorInformationActivity extends AppCompatActivity {
     public void getIntents(){
         Intent intent = getIntent();
         if(intent!= null){
-            doctor = (Doctor)intent.getSerializableExtra(Constants.ListKey);
-            Speciality.setText(doctor.getSpecialty());
+           String Specialty = intent.getStringExtra("Specialty");
+           Speciality.setText(Specialty);
 
         }
 

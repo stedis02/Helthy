@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.healthy">
 
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Healthy">
+        <receiver
+            android:name=".service.DoctorNotificationReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
+
+
         <activity
             android:name=".Activity.NotesActivity"
             android:exported="true" />
@@ -27,8 +36,7 @@
         <activity
             android:name=".Activity.MainActivity"
             android:exported="true">
-
-        <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

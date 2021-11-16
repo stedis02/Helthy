@@ -18,10 +18,11 @@ import com.example.healthy.Doctors.Doctor;
 
 import com.example.healthy.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoctorAdater extends RecyclerView.Adapter<DoctorAdater.MainViewHolder> {
+public class DoctorAdater extends RecyclerView.Adapter<DoctorAdater.MainViewHolder> implements Serializable {
     private Context context;
     private List<Doctor> doctorlist;
 
@@ -60,7 +61,7 @@ public class DoctorAdater extends RecyclerView.Adapter<DoctorAdater.MainViewHold
 
 
     // doctor list
-    class MainViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class MainViewHolder extends RecyclerView.ViewHolder implements Serializable, View.OnClickListener{
         public MainViewHolder(@NonNull View itemView, Context context, List<Doctor> doctorlist) {
             super(itemView);
             noteTitle = itemView.findViewById(R.id.specTitel);
@@ -84,8 +85,7 @@ public class DoctorAdater extends RecyclerView.Adapter<DoctorAdater.MainViewHold
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(context, DoctorInformationActivity.class);
-            intent.putExtra(Constants.ListKey, doctorlist.get(getAdapterPosition()));
-            intent.putExtra(Constants.NoteEditKey, false);
+            intent.putExtra(Constants.DoctorListKey, doctorlist.get(getAdapterPosition()));
             context.startActivity(intent);
         }
     }

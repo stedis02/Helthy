@@ -1,6 +1,7 @@
 package com.example.healthy.Activity;
 
 
+import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -8,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.EditText;
@@ -23,6 +25,9 @@ import com.example.healthy.Doctors.Doctor;
 
 import com.example.healthy.R;
 import com.example.healthy.adapter.DoctorAdater;
+import com.example.healthy.service.DoctorNotificationReceiver;
+
+import java.util.Calendar;
 
 
 public class DoctorCreateActivity extends AppCompatActivity {
@@ -68,50 +73,29 @@ public class DoctorCreateActivity extends AppCompatActivity {
 
     }
 
-    public static void createChannelIfNeeded(NotificationManager notificationManager) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel notificationChannel = new NotificationChannel(Chanel_id, Chanel_id, NotificationManager.IMPORTANCE_DEFAULT);
-            notificationManager.createNotificationChannel(notificationChannel);
-        }
-
-    }
-
     public void ClickSave(View view) {
         if (surname.getText().toString().equals("") || name.getText().toString().equals("") || date.getText().toString().equals("")) {
             Toast.makeText(this, R.string.note_error_massage, Toast.LENGTH_SHORT).show();
 
         } else {
             dbManager.DBInsertDoctor(Speciality.getText().toString(), surname.getText().toString(), name.getText().toString() + " " + middleName.getText().toString() , date.getText().toString() , time.getText().toString());
-
-            // нужно передавать нужный элемент коллекции доктор. пока думаю как это сделать.
-            // при нажатии на уведомление программа падает
-            // так как не понимает от какого элемента коллекции ей брать данные.
-
-            Intent intent = new Intent(getApplicationContext(), DoctorInformationActivity.class);
-
-            // я нашёл решение
-            // иногда моя гениальность просто пугает
-
             doctorAdater.updateAdapter(dbManager.DBGetDoctor());
             int  NOT_Index;
             NOT_Index = doctorAdater.getDoctorlist().size()-1;
-            intent.putExtra(Constants.ListKey, doctorAdater.getDoctorlist().get(NOT_Index));
-
-
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getApplicationContext(), Chanel_id)
-                    .setAutoCancel(false)
-                    .setSmallIcon(R.drawable.ic_launcher_foreground)
-                    .setWhen(System.currentTimeMillis())
-                    .setContentIntent(pendingIntent)
-                    .setContentTitle("Вы создали новую запись")
-                    .setContentText(Speciality.getText().toString())
-                    .setPriority(BIND_WAIVE_PRIORITY);
-            createChannelIfNeeded(notificationManager);
-            notificationManager.notify(Not_id, notificationBuilder.build());
+            Intent intentNotification = new Intent(getApplicationContext(), DoctorNotificationReceiver.class);
+            intentNotification.putExtra(Constants.DoctorListKey, doctorAdater.getDoctorlist().get(NOT_Index));
+            sendBroadcast(intentNotification);
+            //время установлено для тестов. в последствии нужно будет передавать значеения с активностии и высчитывать твремя и дату каждого напоминания
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, 18);
+            calendar.set(Calendar.MINUTE, 31);
+            calendar.set(Calendar.SECOND, 0);
+            AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intentNotification, PendingIntent.FLAG_IMMUTABLE);
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
 
             dbManager.DBClose();
+
 
             finish();
         }

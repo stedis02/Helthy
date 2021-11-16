@@ -2,6 +2,7 @@ package com.example.healthy.BD;
 
 public class Constants {
     public static final String ListKey = "list_key";
+    public static final String DoctorListKey = "Doctor_list_key";
     public static final String NoteEditKey = "Note_Edit_key";
     // создание таблицы базы данных для заметок
     public static final String _id = "_id";

@@ -8,6 +8,9 @@ public class Doctor implements Serializable {
     private String Surname;
     private String specialty;
 
+    public Doctor() {
+    }
+
     public String getSurname() {
         return Surname;
     }
