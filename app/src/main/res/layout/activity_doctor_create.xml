@@ -7,36 +7,6 @@
     tools:context=".Activity.DoctorCreateActivity">
 
     <EditText
-        android:id="@+id/time"
-        android:layout_width="0dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="344dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:hint="Время записи"
-        android:inputType="datetime"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/date"
-        android:layout_width="0dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="280dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:hint="Дата записи"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
         android:id="@+id/speciality"
         android:layout_width="0dp"
         android:layout_height="57dp"
@@ -109,4 +79,49 @@
         app:layout_constraintTop_toBottomOf="@+id/middleName"
         app:layout_constraintVertical_bias="0.889"
         app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <Button
+        android:id="@+id/timebut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="136dp"
+        android:onClick="DataClick"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/middleName" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="TimeClick"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timebut" />
+
+    <TextView
+        android:id="@+id/DataCurent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="152dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toEndOf="@+id/timebut"
+        app:layout_constraintTop_toBottomOf="@+id/middleName" />
+
+    <TextView
+        android:id="@+id/TimeCurent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/DataCurent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

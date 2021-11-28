@@ -21,6 +21,7 @@ import java.util.Date;
 public class DoctorInformationActivity extends AppCompatActivity {
     private Doctor doctor;
     private TextView Speciality;
+    private Calendar calendar = Calendar.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +39,15 @@ public class DoctorInformationActivity extends AppCompatActivity {
     public void getIntents(){
         Intent intent = getIntent();
         if(intent!= null){
-           String Specialty = intent.getStringExtra("Specialty");
-           Speciality.setText(Specialty);
-
+            Boolean AdapterCheck = intent.getBooleanExtra("DCF",true);
+            if(AdapterCheck == false){
+               doctor = (Doctor)intent.getSerializableExtra(Constants.DoctorListKey);
+                Speciality.setText(doctor.getSpecialty());
+            }
+            else {
+                String Specialty = intent.getStringExtra("Specialty");
+                Speciality.setText(Specialty);
+            }
         }
 
     }

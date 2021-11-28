@@ -86,6 +86,7 @@ public class DoctorAdater extends RecyclerView.Adapter<DoctorAdater.MainViewHold
         public void onClick(View view) {
             Intent intent = new Intent(context, DoctorInformationActivity.class);
             intent.putExtra(Constants.DoctorListKey, doctorlist.get(getAdapterPosition()));
+            intent.putExtra("DCF", false);
             context.startActivity(intent);
         }
     }
